@@ -1,36 +1,22 @@
-# Awsqr
+# awsqr
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/awsqr`. To experiment with that code, run `bin/console` for an interactive prompt.
+I have a fair number of AWS accounts. I use it both personally and professionally. I was finding it difficult to add new accounts and keep track of which account / user they were associated in. Most other MFA providers set the issuer field in the QR code which makes life a little easier. 
 
-TODO: Delete this and the text above, and describe your gem
+This utility is just really to help set the issuer, i suggest you add an account label (--accountlabel) with the name of the account you want. 
 
-## Installation
+![Image Showing The Issuer Field Set](/example.png)
 
-Add this line to your application's Gemfile:
+Personally I think that's a lot clearer! This is only a cli tool, it doesn't display the QRCode in the terminal as I found that ascii art QRCodes didn't work with the google auth app. 
 
-```ruby
-gem 'awsqr'
+## using it
+
+```
+awsqr generate --secret=SECRET --username=USERNAME [--accountlabel=ACCOUNTLABEL --output=OUTPUTIMAGENAME]
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install awsqr
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+output images are png's. 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/awsqr.
+Bug reports and pull requests are welcome on GitHub at https://github.com/aughban/awsqr.
 

@@ -17,6 +17,7 @@ class AWSQRCLI < Thor
 		end
 		issuer = URI::encode(issuer)
 
+		# https://github.com/google/google-authenticator/wiki/Key-Uri-Format
 		qrcode = RQRCode::QRCode.new("otpauth://totp/#{options[:username]}?secret=#{options[:secret]}&issuer=#{issuer}")
 
 		if options[:output].nil? then
