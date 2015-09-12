@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+require 'thor'
+require 'rqrcode'
+require 'open-uri'
+
+class AWSQRCLI < Thor
+	desc "generate", "Generates a QR code with the issuer field filled in"
+	option :secret, required: true
+	option :username, required: true
+	option :accountlabel
+	option :output
+	def generate()
+		if options[:accountlabel].nil? then
+			issuer = "Amazon Web Services"
+		else
+			issuer = "AWS : " + options[:accountlabel]
+		end
+		issuer = URI::encode(issuer)
+
+		qrcode = RQRCode::QRCode.new("otpauth://totp/#{options[:username]}?secret=#{options[:secret]}&issuer=#{issuer}")
+
+		if options[:output].nil? then
+			filename = "output.png"
+		else
+			filename = options[:output]
+		end
+
+		qrcode.as_png(fill: 'white', color: 'black', size: 420, file: filename)
+	end
+end
+    
+AWSQRCLI.start(ARGV)
