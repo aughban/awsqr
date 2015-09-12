@@ -1,5 +1,7 @@
 # awsqr
 
+__I suggest you add the QR code given and then use the secret to generate this one, just incase__
+
 I have a fair number of AWS accounts. I use it both personally and professionally. I was finding it difficult to add new accounts and keep track of which account / user they were associated in. Most other MFA providers set the issuer field in the QR code which makes life a little easier. 
 
 This utility is just really to help set the issuer, i suggest you add an account label (--accountlabel) with the name of the account you want. 
